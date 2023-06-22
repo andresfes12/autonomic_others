@@ -1,13 +1,7 @@
 array1 = [10, 20, 30]
 array2 = [5, 15, 25]
 
-
-if array1.length != array2.length
-  console.log "Las matrices no tienen la misma longitud"
-  process.exit(1)
-
-
 length = array1.length
 for i in [0...length]
   sum = array1[i] + array2[i]
-  console.log "Suma en la posición #{i}: #{sum}"
+  console.log #{sum}
