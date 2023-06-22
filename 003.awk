@@ -13,6 +13,6 @@ BEGIN {
 {
     for (i = 1; i <= 3; i++) {
         sum[i] = array1[i] + array2[i]
-        print "Suma en la posición", i, ":", sum[i]
+        print sum[i]
     }
 }
