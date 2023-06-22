@@ -1,0 +1,10 @@
+sequence1 := [1, 2, 3, 4, 5]
+sequence2 := [6, 7, 8, 9, 10]
+
+result := []
+
+for i in range(len(sequence1)):
+    sum := sequence1[i] + sequence2[i]
+    result.append(sum)
+
+print(result)
