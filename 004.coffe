@@ -1,0 +1,16 @@
+min_of_two = (num1, num2) ->
+  if num1 <= num2
+    num1
+  else
+    num2
+
+input = process.argv.slice(2)
+n = parseInt(input.shift())
+
+for i in [0...n]
+  num1 = parseInt(input.shift())
+  num2 = parseInt(input.shift())
+  result = min_of_two(num1, num2)
+  process.stdout.write("#{result} ")
+
+process.stdout.write("\n")
