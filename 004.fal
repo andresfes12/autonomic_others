@@ -1,0 +1,22 @@
+open System
+
+let minOfTwo (n: int) (data: int[]) =
+    let result = Array.zeroCreate n
+    for i in 0 .. n - 1 do
+        let nums = data.[i * 2 .. i * 2 + 1]
+        let min = Array.min nums
+        result.[i] <- min
+    result
+
+let readData () =
+    let n = Int32.Parse(Console.ReadLine())
+    let input = Console.ReadLine().Split() |> Array.map Int32.Parse
+    (n, input)
+
+let solveProblem () =
+    let (n, data) = readData()
+    let result = minOfTwo n data
+    let output = String.Join(" ", result)
+    Console.WriteLine(output)
+
+solveProblem()
