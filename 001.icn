@@ -1,0 +1,8 @@
+procedure sumar()
+   a := 5 
+   b := 3 
+   suma := a + b
+   write("La suma de a y b es:", suma)
+end
+
+sumar()
