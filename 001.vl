@@ -1,0 +1,11 @@
+fn sumar() {
+    a := 5 
+    b := 3 
+    suma := a + b
+    println('$suma')
+}
+
+fn main() {
+    sumar()
+}
+
