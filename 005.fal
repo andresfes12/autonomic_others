@@ -1,0 +1,20 @@
+numCases = input()
+i = 0
+while i < numCases loop
+    i = i + 1
+    input = input()
+    inputList = split(input, " ")
+
+    a = toint(inputList[1])
+    b = toint(inputList[2])
+    c = toint(inputList[3])
+
+    if a <= b and a <= c then
+        println(a)
+    else if b <= a and b <= c then
+        println(b)
+    else
+        println(c)
+    end
+end
+
