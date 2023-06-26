@@ -1,0 +1,16 @@
+minOfThree = (a, b, c) ->
+  if a <= b && a <= c
+    a
+  else if b <= a && b <= c
+    b
+  else
+    c
+
+input = process.stdin.toString().trim().split('\n')
+numCases = parseInt(input[0])
+
+for i in [1...numCases + 1]
+  [a, b, c] = input[i].split(' ').map((x) -> parseInt(x))
+  min = minOfThree(a, b, c)
+  console.log(min)
+
