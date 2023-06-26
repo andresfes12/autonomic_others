@@ -1,0 +1,5 @@
+main =>
+    A = 5, 
+    B = 3,  
+    Suma = A + B,
+    println(Suma).
