@@ -1,0 +1,22 @@
+def arreglo = []
+for (var i = 0; i < 300; i++)
+    var numero = rand_int(1, 1000)
+    arreglo.push(numero)
+end
+
+var menor = arreglo[0]
+var mayor = arreglo[0]
+
+for var num in arreglo
+    if num < menor then
+        menor = num
+    end
+
+    if num > mayor then
+        mayor = num
+    end
+end
+
+println(menor)
+println(mayor)
+
