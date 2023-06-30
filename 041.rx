@@ -1,0 +1,15 @@
+array1 = [98, 54, 23]
+array2 = [12, 90, 87]
+array3 = [11, 19, 14]
+array4 = [67, 32, 5]
+
+find_middle: procedure
+  array = arg(1)
+  sorted = sort(array)
+  middle = sorted[2]
+  return middle
+
+say find_middle(array1)
+say find_middle(array2)
+say find_middle(array3)
+say find_middle(array4)
