@@ -1,0 +1,13 @@
+let arrays = [ [51, 2, 72],
+    [10, 43, 8],
+    [11, 6, 36],
+    [9, 23, 59]
+];
+
+for array in arrays do
+    let sorted = array.sort();
+    let middleIndex = length(sorted) / 2;
+    let middleValue = sorted[middleIndex];
+    print(middleValue);
+done;
+
