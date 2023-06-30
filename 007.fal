@@ -1,37 +1,22 @@
-def maxCandies(isles, i):
-    if i <= 0:
-        return 0
-    elif i == 1:
-        return isles[0]
-    else:
-        maxCandiesWithoutJump = maxCandies(isles, i - 1)
-        maxCandiesWithJump = maxCandies(isles, i - 2) + isles[i - 1]
-        return max(maxCandiesWithoutJump, maxCandiesWithJump)
+use io
 
-def processTestCases(testCases, index):
-    if index <= len(testCases):
-        isles = testCases[index - 1]
-        maxCandiesCollected = maxCandies(isles, len(isles))
-        print(maxCandiesCollected, end='')
+function fahrenheit_to_celsius(F: real) -> real
+    return (F - 32) * 5 / 9
 
-        if index < len(testCases):
-            print(' ', end='')
+function convert_temperatures(temps: list of real) -> unit
+    for temp in temps loop
+        celsius = fahrenheit_to_celsius(temp)
+        put celsius with "%.2f "
+    end
 
-        processTestCases(testCases, index + 1)
-    else:
-        print()
+function main() -> unit
+    num_temps = toint(getline())
+    temps_list = []
+    repeat num_temps times
+        temp = tofloat(getline())
+        temps_list.append(temp)
+    end
+    convert_temperatures(temps_list)
+end
 
-def readTestCase(testCases):
-    line = input()
-    if line:
-        isles = list(map(int, line.split()))
-        testCases.append(isles)
-        readTestCase(testCases)
-
-numTestCases = int(input())
-
-testCases = []
-readTestCase(testCases)
-
-processTestCases(testCases, 1)
-
+main()
