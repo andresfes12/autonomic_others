@@ -1,0 +1,27 @@
+(defun max-candies (isles i)
+  (cond ((<= i 0) 0)
+        ((= i 1) (nth 0 isles))
+        (t (let ((max-c (max-candies isles (- i 1)))
+                 (max-j (+ (max-candies isles (- i 2))
+                           (nth (- i 1) isles))))
+             (max max-c max-j)))))
+
+(defun solution (isles)
+  (let* ((max-candies (max-candies isles (length isles))))
+    (princ max-candies)
+    (when (not (eq isles (last isles)))
+      (princ " "))))
+
+(defun main ()
+  (let* ((num-test-cases (parse-integer (read-line)))
+         (test-cases (make-list num-test-cases)))
+    (dotimes (i num-test-cases)
+      (let* ((line (read-line))
+             (isles (mapcar #'parse-integer (split-string line))))
+        (setf (nth i test-cases) isles)))
+    (dolist (test-case test-cases)
+      (solution test-case))
+    (terpri)))
+
+(main)
+
