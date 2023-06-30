@@ -1,0 +1,37 @@
+def maxCandies(isles, i):
+    if i <= 0:
+        return 0
+    elif i == 1:
+        return isles[0]
+    else:
+        maxCandiesWithoutJump = maxCandies(isles, i - 1)
+        maxCandiesWithJump = maxCandies(isles, i - 2) + isles[i - 1]
+        return max(maxCandiesWithoutJump, maxCandiesWithJump)
+
+def processTestCases(testCases, index):
+    if index <= len(testCases):
+        isles = testCases[index - 1]
+        maxCandiesCollected = maxCandies(isles, len(isles))
+        print(maxCandiesCollected, end='')
+
+        if index < len(testCases):
+            print(' ', end='')
+
+        processTestCases(testCases, index + 1)
+    else:
+        print()
+
+def readTestCase(testCases):
+    line = input()
+    if line:
+        isles = list(map(int, line.split()))
+        testCases.append(isles)
+        readTestCase(testCases)
+
+numTestCases = int(input())
+
+testCases = []
+readTestCase(testCases)
+
+processTestCases(testCases, 1)
+
