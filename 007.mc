@@ -1,44 +1,42 @@
-:- module max_candies.
+:- module fahrenheit_to_celsius.
 
 :- interface.
-
 :- import_module io.
 
 :- pred main(io::di, io::uo) is det.
 
 :- implementation.
-
 :- import_module list.
 
-:- func max_candies(list(int)) = int.
-max_candies(Isles) = MaxCandies :-
-    max_candies_2(Isles, MaxCandies).
+% Predicado para convertir una temperatura en grados Fahrenheit a grados Celsius
+:- pred fahrenheit_to_celsius(float::in, float::out) is det.
+fahrenheit_to_celsius(F, C) :-
+    C = (F - 32.0) * (5.0 / 9.0).
 
-:- func max_candies_2(list(int), int) = int.
-max_candies_2([Candy], Candy).
-max_candies_2([Candy1, Candy2 | Isles], MaxCandies) =
-    max(max_candies_2([Candy2 | Isles], MaxCandies),
-        max_candies_2(Isles, MaxCandies + Candy1)).
+% Predicado para convertir una lista de temperaturas en grados Fahrenheit a grados Celsius
+:- pred convert_temperatures(list(float)::in) is det.
+convert_temperatures(Temperatures) :-
+    foldl(convert_temperature, Temperatures, io.write_string("\n")).
+
+:- pred convert_temperature(float::in, io::di, io::uo) is det.
+convert_temperature(Temperature, !IO) :-
+    fahrenheit_to_celsius(Temperature, Celsius),
+    io.format("%.2f ", [f(Celsius)], !IO).
 
 main(!IO) :-
-    io.read_int(IO, NumTestCasesResult),
-    ( NumTestCasesResult = ok(NumTestCases),
-        io.read_list(NumTestCases, io.read_int, IslesResult, !IO),
-        ( IslesResult = ok(Isles),
-            list.map_foldl(max_candies, Isles, MaxCandiesList),
-            list.foldl(print_candies, MaxCandiesList, !IO)
-        ; IslesResult = error(_),
-            io.write_string("Error: Invalid input for test cases\n", !IO)
-        )
-    ; NumTestCasesResult = eof,
-        io.write_string("Error: Unexpected end of input\n", !IO)
-    ; NumTestCasesResult = error(_),
-        io.write_string("Error: Invalid input for number of test cases\n", !IO)
+    io.read_int(N, !IO),
+    read_temperatures(N, Temperatures, !IO),
+    convert_temperatures(Temperatures).
+
+:- pred read_temperatures(int::in, list(float)::out, io::di, io::uo) is det.
+read_temperatures(N, Temperatures, !IO) :-
+    ( if N > 0 then
+        io.read_float(Temperature, !IO),
+        Temperatures = [Temperature | RestTemperatures],
+        read_temperatures(N - 1, RestTemperatures, !IO)
+      else
+        Temperatures = []
     ).
 
-:- pred print_candies(int::in, io::di, io::uo) is det.
-print_candies(Candies, !IO) :-
-    io.write_int(Candies, !IO),
-    io.write_char(' ', !IO).
-
-:- end_module.
+:- pred mercury_main(io::di, io::uo) is cc_multi.
+mercury_main(!IO) :- main(!IO).
