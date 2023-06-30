@@ -1,0 +1,14 @@
+farenjai = [32, 68, 86, 104, 122]
+celsius = []
+
+convert_to_celsius = (fahrenheit) ->
+  celsius = ((fahrenheit - 32) * 5/9).toFixed(2)
+  return celsius
+
+for temp in farenjai
+  celsius_temp = convert_to_celsius(temp)
+  celsius.push(celsius_temp)
+
+for temp in celsius
+  console.log(temp)
+
