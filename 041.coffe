@@ -1,0 +1,12 @@
+arrays = [
+  [45, 43, 2]
+  [10, 40, 33]
+  [70, 9, 28]
+  [90, 43, 58]
+]
+
+for arr in arrays
+  sortedArr = arr.sort((a, b) -> a - b)
+  middleValue = sortedArr[1]
+  console.log middleValue
+
