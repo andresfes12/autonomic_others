@@ -1,0 +1,16 @@
+parse arg cases
+
+do i = 1 to cases
+  line = linein()
+  vowels = count_vowels(line)
+  if i = cases then
+    say vowels
+  else
+    say vowels,
+end
+
+count_vowels:
+  arg line
+  line = translate(line, ' ', '')
+  line = translate(line, , 'AEIOUYaeiouy')
+  return length(line)
