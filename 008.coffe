@@ -1,0 +1,14 @@
+sum_arithmetic_sequence = (A, B, N) ->
+  sum = 0
+  for i in [0...N]
+    term = A + i*B
+    sum += term
+    process.stdout.write "#{term} "
+  process.stdout.write "\n"
+
+num_cases = parseInt(prompt("Enter the number of test cases: "))
+
+for i in [1..num_cases]
+  input = prompt("Enter the values for test case #{i}: ")
+  [A, B, N] = input.split(" ").map((x) -> parseInt(x))
+  sum_arithmetic_sequence(A, B, N)
