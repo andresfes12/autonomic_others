@@ -1,0 +1,23 @@
+sum_arithmetic_sequence:
+  parse arg A B N
+  sum = 0
+  
+  do i = 0 to N-1
+    term = A + i*B
+    sum = sum + term
+  end
+  
+  return sum
+
+say 'Enter the number of test cases:'
+pull num_cases
+  
+do i = 1 to num_cases
+  say 'Enter the values for test case', i
+  pull A B N
+  
+  result = sum_arithmetic_sequence(A, B, N)
+  
+  say 'The result for test case', i, 'is:', result
+end
+
