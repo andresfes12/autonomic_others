@@ -1,0 +1,16 @@
+ion import ion
+
+
+def sumar(num1, num2):
+    return num1 + num2
+
+
+ion_data = ion.loads('''
+{
+  "number1": 5,
+  "number2": 7
+}
+''')
+
+resultado = sumar(ion_data["number1"], ion_data["number2"])
+print("La suma es:", resultado)
