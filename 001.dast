@@ -1,0 +1,8 @@
+dast
+
+implement main0() = {
+    val number1: int = 5
+    val number2: int = 7
+    val sum: int = number1 + number2
+    val () = println!("La suma es: {}", sum)
+}
