@@ -1,0 +1,23 @@
+(defn -main []
+  (let [reader (js/require "readline").createInterface
+               (js/require '(:stdin :stdout))
+        ]
+    (reader :prompt "Ingrese el primer número: "
+            :input process.stdin
+            :output process.stdout
+            :terminal false)
+    (reader :on 'line (fn [input]
+                        (let [number1 (js/parseInt input)
+                              reader2 (js/require "readline").createInterface
+                                       (js/require '(:stdin :stdout))
+                              ]
+                          (reader2 :prompt "Ingrese el segundo número: "
+                                   :input process.stdin
+                                   :output process.stdout
+                                   :terminal false)
+                          (reader2 :on 'line (fn [input2]
+                                               (let [number2 (js/parseInt input2)
+                                                     sum (+ number1 number2)]
+                                                 (console.log "La suma es:" sum)
+                                                 (process.exit)))))))))
+
