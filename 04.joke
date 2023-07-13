@@ -1,0 +1,8 @@
+(defn compare-vectors [vector1 vector2]
+  (doseq [[v1 v2] (zip vector1 vector2)]
+    (println (min v1 v2))))
+
+(def vector1 [3 9 2 5])
+(def vector2 [6 4 8 1])
+
+(compare-vectors vector1 vector2)
