@@ -1,0 +1,11 @@
+fn compare_vectors(vector1, vector2) {
+    for i in $(seq 0 (len $vector1)) {
+        let min_val = min $vector1[$i] $vector2[$i]
+        print $min_val
+    }
+}
+
+let vector1 = [3 9 2 5]
+let vector2 = [6 4 8 1]
+
+compare_vectors $vector1 $vector2
